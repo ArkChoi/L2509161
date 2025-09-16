@@ -141,28 +141,42 @@ int main()
 	/*int PlayerInput = 0;
 	cin >> PlayerInput;*/
 	
-	//7번 연습 (4번 연습이랑 비슷해서 그거 사용)
-	int ObjectWall[10][10] = { 0, };
+	//7번 연습 (종합본)
+	int ObjectWall[10][10] = {
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	};
+
+	int PlayerX = 1;
+	int PlayerY = 1;
+	char PlayerPoint = '@';
 
 	char ObjectShape = '*';
 
-	for (int i = 0; i < 10; i++)
+	bool GamePlay = true;
+
+	int KeyInput = 0;
+	COORD Cur{};
+
+	for (int Y = 0; Y < 10; Y++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int X = 0; X < 10; X++)
 		{
-			if (i == 0 || i == 9 || j == 0 || j == 9)
+			if (PlayerX == X && PlayerY == Y)
 			{
-				ObjectWall[j][i] = ObjectShape;
+				cout << PlayerPoint << " ";
 			}
-		}
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < 10; j++)
-		{
-			if (ObjectWall[i][j] == ObjectShape)
+			else if (ObjectWall[Y][X] == 1)
 			{
-				cout << (char)ObjectWall[i][j] << " ";
+				cout << ObjectShape << " ";
 			}
 			else
 			{
@@ -170,6 +184,65 @@ int main()
 			}
 		}
 		cout << endl;
+	}
+
+	while (GamePlay)
+	{
+		//Player Controller
+		switch (KeyInput = _getch())
+		{
+		case 'w':
+			PlayerY--;
+			if (ObjectWall[PlayerY][PlayerX] == 1) {
+				PlayerY++;
+			}
+			break;
+		case 's':
+			PlayerY++;
+			if (ObjectWall[PlayerY][PlayerX] == 1) {
+				PlayerY--;
+			}
+			break;
+		case 'a':
+			PlayerX--;
+			if (ObjectWall[PlayerY][PlayerX] == 1) {
+				PlayerX++;
+			}
+			break;
+		case 'd':
+			PlayerX++;
+			if (ObjectWall[PlayerY][PlayerX] == 1) {
+				PlayerX--;
+			}
+			break;
+		case 'q':
+			GamePlay = false;
+			break;
+		default:
+			break;
+		}
+
+		system("cls");
+
+		for (int Y = 0; Y < 10; Y++)
+		{
+			for (int X = 0; X < 10; X++)
+			{
+				if (PlayerX == X && PlayerY == Y)
+				{
+					cout << PlayerPoint << " ";
+				}
+				else if (ObjectWall[Y][X] == 1)
+				{
+					cout << ObjectShape << " ";
+				}
+				else
+				{
+					cout << "  ";
+				}
+			}
+			cout << endl;
+		}
 	}
 	return 0;
 }
