@@ -61,7 +61,7 @@ int main()
 	cout << PlayerPoint << endl;*/
 
 	// 3번 연습?
-	int PlayerX = 0;
+	/*int PlayerX = 0;
 	int PlayerY = 0;
 	char PlayerPoint = '@';
 
@@ -99,7 +99,77 @@ int main()
 		Cur.Y = PlayerY;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
 		cout << PlayerPoint << endl;
-	}
+	}*/
 
+	//4번 연습
+	/*int ObjectWall[10][10] = {0,};
+
+	char ObjectShape = '*';
+
+	for (int i=0 ; i<10 ; i++) 
+	{
+		for (int j=0 ; j<10 ; j++) 
+		{
+			if (i==0 || i==9 || j==0 || j==9)
+			{
+				ObjectWall[j][i] = ObjectShape;
+			}
+		}
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (i == 0 || i == 9 || j == 0 || j == 9)
+			{
+				cout << (char)ObjectWall[i][j] << " ";
+			}
+			else 
+			{
+				cout << "  ";
+			}
+		}
+		cout << endl;
+	}*/
+
+	//5번 연습
+	/*int UserInput = 0;
+	cin >> UserInput; //simple input
+	cout << UserInput << endl;*/
+
+	//6번 연습 (가위바위보) 미완
+	/*int PlayerInput = 0;
+	cin >> PlayerInput;*/
+	
+	//7번 연습 (4번 연습이랑 비슷해서 그거 사용)
+	int ObjectWall[10][10] = { 0, };
+
+	char ObjectShape = '*';
+
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (i == 0 || i == 9 || j == 0 || j == 9)
+			{
+				ObjectWall[j][i] = ObjectShape;
+			}
+		}
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (ObjectWall[i][j] == ObjectShape)
+			{
+				cout << (char)ObjectWall[i][j] << " ";
+			}
+			else
+			{
+				cout << "  ";
+			}
+		}
+		cout << endl;
+	}
 	return 0;
 }
