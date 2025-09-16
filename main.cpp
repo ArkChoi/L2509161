@@ -65,10 +65,12 @@ int main()
 	int PlayerY = 0;
 	char PlayerPoint = '@';
 
-	int KeyInput;
-	COORD Cur;
+	bool GamePlay = true;
 
-	while (true)
+	int KeyInput = 0;
+	COORD Cur{};
+
+	while (GamePlay)
 	{
 		switch (KeyInput = _getch())
 		{
@@ -84,12 +86,15 @@ int main()
 		case 'd':
 			PlayerX++;
 			break;
-
+		case 'q':
+			GamePlay = false;
+			break;
 		default:
 			break;
 		}
 
 		system("cls");
+
 		Cur.X = PlayerX;
 		Cur.Y = PlayerY;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
